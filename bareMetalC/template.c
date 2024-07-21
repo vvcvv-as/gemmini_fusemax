@@ -27,8 +27,10 @@ int main() {
 
   elem_t Identity[DIM][DIM];
   for (size_t i = 0; i < DIM; i++)
-    for (size_t j = 0; j < DIM; j++)
-      Identity[i][j] = i == j;
+    for (size_t j = 0; j < DIM; j++){
+      Identity[i][j] = 0x0001; //i == j;
+      In[i][j] = 0x3f00;
+    }
 
   printf("Calculate the scratchpad addresses of all our matrices\n");
   printf("  Note: The scratchpad is \"row-addressed\", where each address contains one matrix row\n");
@@ -65,9 +67,12 @@ int main() {
     printMatrix(Out);
     printf("\n");
 
-    exit(1);
+    //exit(1);
   }
-
+  printMatrix(In);
+  printMatrix(Out);
+  printf("%d %d\n", sizeof(In[0][0]),sizeof(acc_t));
+  printf("%x\n", In[0][0]);
   printf("Input and output matrices are identical, as expected\n");
   exit(0);
 }

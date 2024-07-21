@@ -1053,12 +1053,12 @@ static void matmul_cpu(bool transA, bool transB, size_t DIM_I, size_t DIM_J, siz
         // pass 2: calculate iexp(q_tilde) and sum(q_tilde)
         acc_t sum_exp = 0;
         for (size_t j = 0; j < DIM_J; j++) {
-          acc_t q = c_buffer[j] - max_q;
-          acc_t z = (acc_t) (-q * qln2_inv) >> 16;
-          acc_t qp = q + z * qln2;
-          acc_t q_exp = (qp + qb)*(qp + qb) + qc;
-          c_buffer[j] = q_exp >> z;
-          sum_exp += c_buffer[j];
+          // acc_t q = c_buffer[j] - max_q;
+          // //acc_t z = (acc_t) (-q * qln2_inv) >> 16;
+          // acc_t qp = q + z * qln2;
+          // acc_t q_exp = (qp + qb)*(qp + qb) + qc;
+          // //c_buffer[j] = q_exp >> z;
+          // sum_exp += c_buffer[j];
         }
 
         // pass 3: divide by sum
